@@ -3,4 +3,6 @@
 	<classpathentry kind="output" path="bin"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
+	<classpathentry kind="src" path="/ReactiveUI-FX" exported="true"/>
+	<classpathentry sourcepath="C:/Users/Nick/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.6/6fb09460ad7f243f1497416332618d1ed0d39d9c/rxjava-1.0.6-sources.jar" kind="lib" path="C:/Users/Nick/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.6/6f023873ac0aa0fb8a788992712d7add264fe94/rxjava-1.0.6.jar" exported="true"/>
 </classpath>

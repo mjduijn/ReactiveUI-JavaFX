@@ -6,4 +6,6 @@ repositories {
 }
 
 dependencies {
+	compile 'io.reactivex:rxjava:1.0.6'	
+	compile project(':ReactiveUI-FX')
 }

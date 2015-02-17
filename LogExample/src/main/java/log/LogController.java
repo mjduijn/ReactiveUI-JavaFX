@@ -18,6 +18,7 @@ public class LogController {
 	
 	@FXML
 	public void sortAZ(ActionEvent event){
+		System.out.println(event.getEventType());
 		Collections.sort(logList.getItems(), (x,y) -> x.compareTo(y));
 	}
 	
