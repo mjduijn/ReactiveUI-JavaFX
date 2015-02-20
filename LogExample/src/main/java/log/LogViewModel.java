@@ -1,9 +1,25 @@
 package log;
 
-import java.util.List;
+import nl.tudelft.reactiveui.javafx.observable.ObservableVariable;
 
 
-public class LogModel {
+
+public class LogViewModel {
+	private ObservableVariable<String> error;
+	
+	public LogViewModel() {
+		error = new ObservableVariable<String>("");
+	}
+	
+	public ObservableVariable<String> getError() {
+		return error;
+	}
+	
+	public void setError(String error) {
+		this.error.setValue(error);
+	}
+	
+	
 //	private ObservableVariable<List<String>> logMessages;
 //	
 //	

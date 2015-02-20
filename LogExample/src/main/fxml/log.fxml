@@ -19,9 +19,10 @@
 	<padding>
 		<Insets top="25" bottom="25" left="10" right="10"/>
 	</padding>
-	<TextField fx:id="logField" GridPane.rowIndex="0" GridPane.columnSpan="2" prefWidth="100000"/>
-	<Label fx:id="logError" GridPane.rowIndex="1" GridPane.columnSpan="2" prefWidth="100000"/>
-	<ListView fx:id="logList" GridPane.rowIndex="2" GridPane.columnSpan="2" prefWidth="100000" prefHeight="100000"/>
+	<TextField fx:id="logField" GridPane.rowIndex="0" GridPane.columnSpan="6" prefWidth="100000"/>
+	<Button fx:id="addLog" text="Add" GridPane.rowIndex="0" GridPane.columnIndex="5" prefWidth="100000"/>
+	<Label fx:id="logError" GridPane.rowIndex="1" GridPane.columnSpan="6" prefWidth="100000"/>
+	<ListView fx:id="logList" GridPane.rowIndex="2" GridPane.columnSpan="6" prefWidth="100000" prefHeight="100000"/>
 	<Button fx:id="sortAZ" text="Sort Ascending" GridPane.rowIndex="3" GridPane.columnIndex="0" prefWidth="100000"/>
 	<Button fx:id="sortZA" text= "Sort Descending" GridPane.rowIndex="3" GridPane.columnIndex="1" prefWidth="100000"/>
 </GridPane>
