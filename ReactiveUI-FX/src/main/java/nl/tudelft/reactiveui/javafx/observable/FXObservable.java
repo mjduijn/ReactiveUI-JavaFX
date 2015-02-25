@@ -1,6 +1,7 @@
 package nl.tudelft.reactiveui.javafx.observable;
 
 import rx.Observable;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
@@ -11,6 +12,19 @@ public class FXObservable {
 		return Observable.create((subscriber) -> {
 			EventHandler<A> handler = (a) -> subscriber.onNext(a);
 			node.addEventHandler(type, handler);
+		});
+	}
+
+	public static <A> Observable<A> javaObservable(javafx.beans.value.ObservableValue<A> ov){
+		return Observable.create((subscriber) -> {
+			ov.addListener(new javafx.beans.value.ChangeListener<A>() {
+				@Override
+				public void changed(ObservableValue<? extends A> observable,
+						A oldValue, A newValue) {
+					System.out.println(newValue);
+					subscriber.onNext(newValue);
+				}
+			});
 		});
 	}
 }

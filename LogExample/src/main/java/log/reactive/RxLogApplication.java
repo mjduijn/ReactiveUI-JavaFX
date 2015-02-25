@@ -40,6 +40,9 @@ public class RxLogApplication extends Application{
 		model.getError().subscribe(FXObserver.label.text(errorLabel));
 		model.getError().map(s -> s.isEmpty()).subscribe(FXObserver.node.enabled(scene.lookup("#addLog")));
 		
+		FXObservable.javaObservable(model.getError2())
+		.subscribe(System.out::println);
+		
 		FXObservable.node(scene.lookup("#logField"), KeyEvent.KEY_RELEASED)
 		.map(event -> ((TextInputControl) event.getSource()).getText())
 		.forEach(input -> {

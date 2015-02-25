@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import rx.functions.Action1;
 
 public class FXObserver {
-	public static class node{
+	public static class node {
 		public static Action1<Boolean> enabled(Node node){
 			return (newValue) -> node.setDisable(!newValue);
 		}
@@ -13,6 +13,11 @@ public class FXObserver {
 		public static Action1<Boolean> disabled(Node node){
 			return (newValue) -> node.setDisable(newValue);
 		}
+
+		public static Action1<Boolean> setVisible(Node node){
+			return (newValue) -> node.setVisible(!newValue);
+		}
+		
 	}
 	
 	public static class label{

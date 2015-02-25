@@ -1,0 +1,4 @@
+#org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences
+#Wed Feb 25 17:06:20 CET 2015
+build.family.org.gradle.tooling.model.eclipse.HierarchicalEclipseProject=;LogExample;ReactiveUI-FX;
+org.springsource.ide.eclipse.gradle.rootprojectloc=
