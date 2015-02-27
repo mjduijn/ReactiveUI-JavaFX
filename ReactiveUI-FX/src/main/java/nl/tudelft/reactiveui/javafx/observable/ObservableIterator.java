@@ -5,9 +5,9 @@ import java.util.Iterator;
 import rx.Observer;
 
 public class ObservableIterator<A, B> implements Iterator<A>{
-	private Iterator<A> delegate;
-	private Observer<B> observer;
-	private B value;
+	protected Iterator<A> delegate;
+	protected Observer<B> observer;
+	protected B value;
 	
 	public ObservableIterator(Iterator<A> delegate, Observer<B> observer, B value) {
 		this.delegate = delegate;

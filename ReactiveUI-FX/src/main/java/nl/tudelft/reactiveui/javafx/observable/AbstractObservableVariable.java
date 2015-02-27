@@ -8,7 +8,6 @@ import rx.Observable.OnSubscribe;
 public abstract class AbstractObservableVariable<A>{
 	protected A a;
 	protected final Subject<A, A> subject;
-	
 	public final Observable<A> observable;
 	
 	private AbstractObservableVariable(final Subject<A, A> subject, A a) {

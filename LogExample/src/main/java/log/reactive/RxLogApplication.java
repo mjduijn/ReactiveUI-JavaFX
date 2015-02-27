@@ -1,13 +1,13 @@
 package log.reactive;
 
 import java.io.FileInputStream;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 import javafx.application.Application;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableFloatArray;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,17 +39,30 @@ public class RxLogApplication extends Application{
 		List<String> values = ((ListView<String>) scene.lookup("#logList")).getItems();
 		Label errorLabel = (Label) scene.lookup("#logError");
 		
-		LogViewModel model = new LogViewModel();
-		model.getError().subscribe(FXObserver.label.text(errorLabel));
-		model.getError().map(s -> s.isEmpty()).subscribe(FXObserver.node.enabled(scene.lookup("#addLog")));
+		values.addAll(Arrays.asList(new String[]{"bla", "bli", "blo"}));
 		
-		FXObservable.javaObservable(model.getError2())
-		.subscribe(System.out::println);
+		Iterator<String> iterator = values.iterator();
+		iterator.next();
+		iterator.remove();
+		
+		
+		
+		
+		LogViewModel model = new LogViewModel(values);
+		
+		model.getList().observable.subscribe(list -> System.out.println(list));
+		
+		model.getList().add("lalalalal");
+		
+		model.getError().observable.subscribe(FXObserver.label.text(errorLabel));
+		model.getError().observable.map(s -> s.isEmpty()).subscribe(FXObserver.node.enabled(scene.lookup("#addLog")));
+		
+		//FXObservable.javaObservable(model.getError2().observable)
+		//.subscribe(System.out::println);
 		
 		FXObservable.node(scene.lookup("#logField"), KeyEvent.KEY_RELEASED)
 		.map(event -> ((TextInputControl) event.getSource()).getText())
 		.forEach(input -> {
-			System.out.println(input);
 			if(input.isEmpty()){
 				model.setError(String.format("Value may not be empty"));
 			} else if(values.contains(input)){

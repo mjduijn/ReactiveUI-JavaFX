@@ -1,31 +1,32 @@
 package log;
 
-import javafx.beans.property.SimpleStringProperty;
+import java.util.List;
+
+import nl.tudelft.reactiveui.javafx.observable.ObservableListVariable;
 import nl.tudelft.reactiveui.javafx.observable.ObservableVariable;
 
 
 
 public class LogViewModel {
 	private ObservableVariable<String> error;
-	private javafx.beans.property.StringProperty error2;
+	private ObservableListVariable<String> list;
 	
-	public LogViewModel() {
+	
+	public LogViewModel(List<String> list) {
 		error = new ObservableVariable<String>("");
-		error2 = new SimpleStringProperty();
-		
+		this.list = new ObservableListVariable<String>(list);
 	}
 
 	public ObservableVariable<String> getError() {
 		return error;
 	}
-
-	public javafx.beans.property.StringProperty  getError2() {
-		return error2;
-	}
 	
 	public void setError(String error) {
 		this.error.setValue(error);
-		this.error2.setValue(error);
+	}
+	
+	public ObservableListVariable<String> getList() {
+		return list;
 	}
 	
 //		Mutable variable try out
