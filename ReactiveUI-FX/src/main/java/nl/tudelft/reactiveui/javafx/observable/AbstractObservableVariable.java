@@ -5,14 +5,16 @@ import rx.subjects.BehaviorSubject;
 import rx.subjects.Subject;
 import rx.Observable.OnSubscribe;
 
-public abstract class AbstractObservableVariable<A> extends Observable<A>{
+public abstract class AbstractObservableVariable<A>{
 	protected A a;
-	protected Subject<A, A> subject;
+	protected final Subject<A, A> subject;
+	
+	public final Observable<A> observable;
 	
 	private AbstractObservableVariable(final Subject<A, A> subject, A a) {
-		super(sub -> subject.subscribe(next -> sub.onNext(next)));
 		this.subject = subject;
 		this.a = a;
+		this.observable = subject;
 	}
 	
 	public AbstractObservableVariable(A a) {
