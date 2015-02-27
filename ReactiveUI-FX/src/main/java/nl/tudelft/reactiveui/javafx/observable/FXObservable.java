@@ -18,7 +18,7 @@ public class FXObservable {
 	public static <A> Observable<A> javaObservable(javafx.beans.value.ObservableValue<A> ov){
 		return Observable.create((subscriber) -> {
 			ov.addListener(new javafx.beans.value.ChangeListener<A>() {
-				@Override
+								@Override
 				public void changed(ObservableValue<? extends A> observable,
 						A oldValue, A newValue) {
 					System.out.println(newValue);

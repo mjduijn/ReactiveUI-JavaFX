@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 
 import javafx.application.Application;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableFloatArray;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,6 +33,7 @@ public class RxLogApplication extends Application{
 		Parent parent = new FXMLLoader().load(new FileInputStream("src/main/fxml/log.fxml"));
 		stage.setTitle("Reactive Log");
 		Scene scene = new Scene(parent);
+		
 		stage.setScene(scene);
 		
 		List<String> values = ((ListView<String>) scene.lookup("#logList")).getItems();
@@ -63,12 +66,11 @@ public class RxLogApplication extends Application{
 			}
 		};
 		
-		Observable.combineLatest(
+		Observable.merge(
 				FXObservable.node(scene.lookup("#logField"), ActionEvent.ACTION),
-				FXObservable.node(scene.lookup("#addLog"), ActionEvent.ACTION), 
-				(o1, o2) -> o1
+				FXObservable.node(scene.lookup("#addLog"), ActionEvent.ACTION)
 		)
-		.map((event) -> (TextInputControl) event.getSource())
+		.map((o) -> (TextInputControl) scene.lookup("#logField"))
 		.filter((input) -> !input.getText().isEmpty())
 		.subscribe(add);
 		
