@@ -16,29 +16,31 @@ public class ObservableListIterator<A> extends ObservableIterator<A, List<A>> im
 	
 	@Override
 	public boolean hasPrevious() {
+		return delegate.hasPrevious();
 	}
 
 	@Override
 	public A previous() {
-		return null;
+		return delegate.previous();
 	}
 
 	@Override
 	public int nextIndex() {
-		return 0;
+		return delegate.nextIndex();
 	}
 
 	@Override
 	public int previousIndex() {
-		return 0;
+		return delegate.previousIndex();
 	}
 
 	@Override
 	public void set(A e) {
+		delegate.set(e);
 	}
 
 	@Override
 	public void add(A e) {
+		delegate.add(e);
 	}
-
 }
