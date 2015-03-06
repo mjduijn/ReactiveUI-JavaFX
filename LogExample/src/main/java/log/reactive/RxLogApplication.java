@@ -18,8 +18,8 @@ import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import log.LogViewModel;
-import nl.tudelft.reactiveui.javafx.observable.FXObservable;
-import nl.tudelft.reactiveui.javafx.observable.FXObserver;
+import nl.tudelft.rxfx.observable.FXObservable;
+import nl.tudelft.rxfx.observable.FXObserver;
 import rx.Observable;
 import rx.functions.Action1;
 

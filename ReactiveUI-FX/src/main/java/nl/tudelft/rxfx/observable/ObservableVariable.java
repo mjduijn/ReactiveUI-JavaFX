@@ -1,4 +1,4 @@
-package nl.tudelft.reactiveui.javafx.observable;
+package nl.tudelft.rxfx.observable;
 
 import java.util.HashSet;
 import java.util.Set;

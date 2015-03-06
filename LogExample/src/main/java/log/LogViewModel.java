@@ -2,8 +2,8 @@ package log;
 
 import java.util.List;
 
-import nl.tudelft.reactiveui.javafx.observable.ObservableListVariable;
-import nl.tudelft.reactiveui.javafx.observable.ObservableVariable;
+import nl.tudelft.rxfx.observable.ObservableListVariable;
+import nl.tudelft.rxfx.observable.ObservableVariable;
 
 
 

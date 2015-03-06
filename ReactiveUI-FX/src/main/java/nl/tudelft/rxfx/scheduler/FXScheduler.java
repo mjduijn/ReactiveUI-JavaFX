@@ -1,4 +1,4 @@
-package nl.tudelft.reactiveui.javafx.scheduler;
+package nl.tudelft.rxfx.scheduler;
 
 import java.util.concurrent.TimeUnit;
 
