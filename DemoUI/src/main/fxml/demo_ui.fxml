@@ -7,20 +7,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
     <Tab text="tab0">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Slider layoutX="77.0" layoutY="92.0" orientation="VERTICAL" />
-                  <Slider layoutX="189.0" layoutY="66.0" />
-                  <ProgressIndicator layoutX="275.0" layoutY="161.0" progress="0.0" />
-                  <ProgressBar layoutX="221.0" layoutY="222.0" prefWidth="200.0" progress="0.0" />
-                  <CheckBox layoutX="132.0" layoutY="143.0" mnemonicParsing="false" text="CheckBox" />
-                  <ChoiceBox layoutX="387.0" layoutY="118.0" prefWidth="150.0" />
-                  <Label layoutX="177.0" layoutY="282.0" text="Label" />
-                  <TextField layoutX="329.0" layoutY="297.0" />
+                  <Slider fx:id="sliderVer" layoutX="77.0" layoutY="92.0" orientation="VERTICAL" />
+                  <Slider fx:id="sliderHor" layoutX="189.0" layoutY="66.0" />
+                  <ProgressIndicator fx:id="progress" layoutX="275.0" layoutY="161.0" progress="0.0" />
+                  <ProgressBar id="progressBar" layoutX="200.0" layoutY="222.0" prefWidth="200.0" progress="0.0" />
+                  <CheckBox layoutX="145.0" layoutY="122.0" mnemonicParsing="false" text="CheckBox" />
+                  <ChoiceBox id="choiceBox" layoutX="387.0" layoutY="118.0" prefWidth="150.0" />
+                  <Label layoutX="113.0" layoutY="281.0" text="Add to choice box" />
+                  <TextField id="textField" layoutX="241.0" layoutY="276.0" />
+                  <CheckBox layoutX="146.0" layoutY="157.0" mnemonicParsing="false" text="Checkbox" />
                </children></AnchorPane>
       </content>
     </Tab>
