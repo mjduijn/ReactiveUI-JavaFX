@@ -1,6 +1,7 @@
 package nl.tudelft.rxfx.observable;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,6 +18,10 @@ public class ObservableMapVariable<K, V> extends AbstractObservableVariable<Map<
 	public ObservableMapVariable(Map<K, V> a) {
 		super(a);
 		this.a = FXCollections.observableMap(a);
+	}
+	
+	public ObservableMapVariable() {
+		this(new HashMap<>());
 	}
 
 	@Override

@@ -1,31 +1,31 @@
 package nl.tudelft.rx.excel;
 
-import nl.tudelft.reactiveui.javafx.observable.ObservableVariable;
+import nl.tudelft.rxfx.observable.ObservableVariable;
 
 public class Cell {
-	private ObservableVariable<String> result;
-	private ObservableVariable<String> value;
+	public final ObservableVariable<String> result;
+	private String formula;
 	
-	public ObservableVariable<String> getResultObservable() {
-		return result;
-	}
-	public ObservableVariable<String> getValueObservable() {
-		return value;
+	public static final Cell EMPTY = new Cell(new ObservableVariable<String>(""), "");
+	
+	public Cell(ObservableVariable<String> result, String formula) {
+		this.result = result;
+		this.formula = formula;
 	}
 	
 	public String getResult() {
 		return result.getValue();
 	}
 	
-	public String getValue(){
-		return value.getValue();
+	public String getFormula(){
+		return formula;
 	}
 	
 	public void setResult(String result){
 		this.result.setValue(result);
 	}
 	
-	public void setValue(String value){
-		this.value.setValue(value);
+	public void setFormula(String formula){
+		this.formula = formula;
 	}
 }
