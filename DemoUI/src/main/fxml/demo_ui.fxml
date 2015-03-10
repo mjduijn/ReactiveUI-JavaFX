@@ -17,11 +17,11 @@
                   <Slider fx:id="sliderHor" layoutX="189.0" layoutY="66.0" />
                   <ProgressIndicator fx:id="progress" layoutX="275.0" layoutY="161.0" progress="0.0" />
                   <ProgressBar id="progressBar" layoutX="200.0" layoutY="222.0" prefWidth="200.0" progress="0.0" />
-                  <CheckBox layoutX="145.0" layoutY="122.0" mnemonicParsing="false" text="CheckBox" />
+                  <CheckBox id="cbUp" layoutX="145.0" layoutY="122.0" mnemonicParsing="false" text="CheckBox" />
                   <ChoiceBox id="choiceBox" layoutX="387.0" layoutY="118.0" prefWidth="150.0" />
                   <Label layoutX="113.0" layoutY="281.0" text="Add to choice box" />
                   <TextField id="textField" layoutX="241.0" layoutY="276.0" />
-                  <CheckBox layoutX="146.0" layoutY="157.0" mnemonicParsing="false" text="Checkbox" />
+                  <CheckBox id="cbDown" layoutX="146.0" layoutY="157.0" mnemonicParsing="false" text="Checkbox" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -29,9 +29,8 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <DatePicker layoutX="305.0" layoutY="76.0" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="365.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-                  <MenuBar layoutX="126.0" layoutY="224.0">
+                  <DatePicker id="datePicker" layoutX="300.0" layoutY="61.0" />
+                  <MenuBar id="menuBar" layoutX="126.0" layoutY="224.0">
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
@@ -55,13 +54,14 @@
                         </Menu>
                     </menus>
                   </MenuBar>
-                  <MenuButton layoutX="61.0" layoutY="112.0" mnemonicParsing="false" text="MenuButton">
+                  <MenuButton id="menuButton" layoutX="61.0" layoutY="112.0" mnemonicParsing="false" text="MenuButton">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </MenuButton>
-                  <TextField layoutX="280.0" layoutY="171.0" />
+                  <TextField id="tf1Low" layoutX="271.0" layoutY="170.0" />
+                  <TextField id="tf1High" layoutX="271.0" layoutY="142.0" />
                </children></AnchorPane>
       </content>
     </Tab>

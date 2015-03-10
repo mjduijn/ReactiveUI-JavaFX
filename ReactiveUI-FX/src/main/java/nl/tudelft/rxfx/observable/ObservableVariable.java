@@ -17,7 +17,7 @@ public class ObservableVariable<A> extends AbstractObservableVariable<A> impleme
 	}
 	
 	public ObservableVariable() {
-		this(null);
+		this(null); //TODO do default constructor instead if it has one?
 	}
 	
 	public void setValue(A a){

@@ -23,7 +23,7 @@ public class Excel extends Application{
 	public void start(Stage stage) throws Exception {
 		final SpreadSheet spreadsheet = new SpreadSheet();
 		TableView<ObservableMapVariable<String, Cell>> view = new TableView<>(spreadsheet.cells);
-		//view.setEditable(true);
+		view.setEditable(true);
 		
 		Cell cell = new Cell(new ObservableVariable<String>(""), "");
 		cell.setResult("DSAJKDAS");
@@ -33,7 +33,7 @@ public class Excel extends Application{
 		
 		view.getColumns().add(column);
 		column.setCellValueFactory((s) -> new ReadOnlyStringWrapper(s.getValue().getOrDefault(s.getTableColumn().getText(), Cell.EMPTY).getResult()));
-		//column.setCellFactory((x) -> new TextFieldTableCell<>());
+		column.setCellFactory((x) -> new TextFieldTableCell<>());
 		
 		Scene scene = new Scene(view, 800, 600);
 		
@@ -46,7 +46,6 @@ public class Excel extends Application{
 						e.printStackTrace();
 					}
 					spreadsheet.cells.add(RXFXCollections.mapVariable(new HashMap<String, Cell>(){{put("Column1", cell);}}));
-					
 				}
 				
 			};
