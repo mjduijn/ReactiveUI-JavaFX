@@ -3,6 +3,7 @@ package nl.tudelft.rx.excel;
 import java.util.HashMap;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
@@ -19,6 +20,7 @@ public class Excel extends Application{
 		launch(args);
 	}
 
+	@SuppressWarnings("serial")
 	@Override
 	public void start(Stage stage) throws Exception {
 		final SpreadSheet spreadsheet = new SpreadSheet();
@@ -36,7 +38,6 @@ public class Excel extends Application{
 		column.setCellFactory((x) -> new TextFieldTableCell<>());
 		
 		Scene scene = new Scene(view, 800, 600);
-		
 		new Thread(){
 			public void run() {
 				while(true){
@@ -46,12 +47,16 @@ public class Excel extends Application{
 						e.printStackTrace();
 					}
 					spreadsheet.cells.add(RXFXCollections.mapVariable(new HashMap<String, Cell>(){{put("Column1", cell);}}));
+					Platform.runLater(() -> spreadsheet.cells.add(RXFXCollections.mapVariable(new HashMap<String, Cell>(){{put("Column1", cell);}}))); 
 				}
-				
 			};
 		}.start();
+		
 		stage.setScene(scene);
 		
 		stage.show();
+		
+		
+		spreadsheet.cells.add(RXFXCollections.mapVariable(new HashMap<String, Cell>(){{put("Column1", cell);}}));
 	}
 }

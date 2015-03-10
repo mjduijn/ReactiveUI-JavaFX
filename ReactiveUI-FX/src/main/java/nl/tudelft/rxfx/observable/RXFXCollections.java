@@ -8,7 +8,6 @@ public class RXFXCollections {
 		return new ObservableListVariable<A>(list);
 	}
 	
-	
 	public static <K,V> ObservableMapVariable<K, V> mapVariable(Map<K, V> map){
 		return new ObservableMapVariable<K, V>(map);
 	}
