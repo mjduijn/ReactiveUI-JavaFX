@@ -7,6 +7,7 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import nl.tudelft.rxfx.observable.ObservableMapVariable;
 import nl.tudelft.rxfx.observable.ObservableVariable;
@@ -22,20 +23,23 @@ public class Excel extends Application{
 	public void start(Stage stage) throws Exception {
 		final SpreadSheet spreadsheet = new SpreadSheet();
 		TableView<ObservableMapVariable<String, Cell>> view = new TableView<>(spreadsheet.cells);
-		
+		view.setEditable(true);
 		
 		Cell cell = new Cell(new ObservableVariable<String>(""), "");
 		cell.setResult("DSAJKDAS");
 		spreadsheet.cells.add(RXFXCollections.mapVariable(new HashMap<String, Cell>(){{put("Column1", cell);}}));
 		
+		
+		
 		TableColumn<ObservableMapVariable<String, Cell>, String> column = new TableColumn<>("Column1");
 		
 		view.getColumns().add(column);
 		column.setCellValueFactory((s) -> new ReadOnlyStringWrapper(s.getValue().getOrDefault(s.getTableColumn().getText(), Cell.EMPTY).getResult()));
+		column.setCellFactory((x) -> new TextFieldTableCell<>());
 		
 		Scene scene = new Scene(view, 800, 600);
 		
-		
+		/*
 		new Thread(){
 			public void run() {
 				while(true){
@@ -50,7 +54,7 @@ public class Excel extends Application{
 				
 			};
 		}.start();
-		
+		*/
 		stage.setScene(scene);
 		
 		stage.show();

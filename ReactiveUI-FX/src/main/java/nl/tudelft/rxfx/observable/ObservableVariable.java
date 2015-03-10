@@ -16,6 +16,10 @@ public class ObservableVariable<A> extends AbstractObservableVariable<A> impleme
 		this.changeListeners = new HashSet<>();
 	}
 	
+	public ObservableVariable() {
+		this(null);
+	}
+	
 	public void setValue(A a){
 		subject.onNext(a);
 		changeListeners.forEach((listener) -> listener.changed(this, this.a, a));
