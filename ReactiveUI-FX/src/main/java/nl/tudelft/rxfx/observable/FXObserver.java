@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -21,6 +22,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebEngine;
 import javafx.util.Duration;
@@ -159,11 +161,18 @@ public class FXObserver {
 			return (value) -> h.setHtmlText(value);
 		}
 	}
-	
+
 	public static class selectionModel { //Used in combo box and choice box
 		public static Action1<Integer> setVisited(SelectionModel<?> sm) {
 			return (value) -> sm.select(value);
 		}
 	}
+	
+	public static class colorPicker {
+		public static Action1<Color> setVisited(ColorPicker cp) {
+			return (value) -> cp.setValue(value);
+		}
+	}
+	
 	
 }

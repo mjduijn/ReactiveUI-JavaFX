@@ -1,17 +1,14 @@
 package nl.tudelft.rxfx.observable;
-import rx.Observable.OnSubscribe;
-import rx.Observer;
-import rx.Observable;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.functions.Action2;
-import rx.functions.Func1;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
+import rx.Observable;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.functions.Func1;
 
 public class FXObservable {
 	

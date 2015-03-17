@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -22,6 +24,7 @@
                   <Label layoutX="113.0" layoutY="281.0" text="Add to choice box" />
                   <TextField id="textField" layoutX="241.0" layoutY="276.0" />
                   <CheckBox id="cbDown" layoutX="146.0" layoutY="157.0" mnemonicParsing="false" text="Checkbox" />
+                  <ColorPicker layoutX="55.0" layoutY="41.0" />
                </children></AnchorPane>
       </content>
     </Tab>

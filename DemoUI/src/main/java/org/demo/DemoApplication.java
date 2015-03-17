@@ -111,13 +111,6 @@ public class DemoApplication extends Application{
 		.filter(x -> x != null)
 		.subscribe(x -> dt1.text.setValue(x.toString()));
 
-//		Pane p = (Pane)null;
-//		p.setv
-		
-//		FXObservable.javaObservable(b.pressedProperty())
-//		.doOnEach(x -> System.out.println(x))
-//		.subscribe();
-		
 		stage.show();
 	}
 }
