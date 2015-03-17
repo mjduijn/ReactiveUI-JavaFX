@@ -18,7 +18,7 @@ public class ExcelParser {
 	
 	public static final Parser<Character, Expression> number = intr.bind((i) -> retn(new IntegerExpression(i)));
 	
-	public static final Parser<Character, Expression> cellRef = regex("[A-Z]+").bind(column -> intr.bind(row -> retn(new CellRefExpression(column, row))));
+	public static final Parser<Character, Expression> cellRef = regex("[a-zA-Z]+").bind(column -> intr.bind(row -> retn(new CellRefExpression(column.toUpperCase(), row))));
 	
 	private static final Ref<Character, Expression> ref_exp = ref();
 	
@@ -75,7 +75,7 @@ public class ExcelParser {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		String input = "1 + 2 * 3 - 1 * 2";
+		String input = "6 - 2 * A85";
 		Reply<Character, Expression> parsed = parser.parse(State.of(input));
 		if(parsed.isOk()){
 			Integer result = parsed.getResult().visit(new ExcelInterpreter(), null);
