@@ -8,7 +8,6 @@ import java.util.Set;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
-import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 
 @SuppressWarnings("unchecked")
@@ -17,7 +16,7 @@ public class ObservableMapVariable<K, V> extends AbstractObservableVariable<Map<
 	
 	public ObservableMapVariable(Map<K, V> a) {
 		super(a);
-		this.a = FXCollections.observableMap(a);
+		this.a = a instanceof ObservableMap ? (ObservableMap<K,V>) a : FXCollections.observableMap(a);
 	}
 	
 	public ObservableMapVariable() {

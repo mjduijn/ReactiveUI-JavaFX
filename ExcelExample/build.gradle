@@ -6,6 +6,7 @@ repositories {
 }
 
 dependencies {
-	compile 'io.reactivex:rxjava:1.0.6'	
+	compile 'io.reactivex:rxjava:1.0.6'
+	compile 'org.javafp:parsecj:0.2'
 	compile project(':ReactiveUI-FX')
 }
