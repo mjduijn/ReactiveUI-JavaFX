@@ -1,6 +1,7 @@
 package nl.tudelft.rxfx.observable;
 
 import rx.Observable;
+import rx.Subscriber;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -12,7 +13,7 @@ public class FXObservable {
 		return Observable.create((subscriber) -> {
 			EventHandler<A> handler = (a) -> subscriber.onNext(a);
 			node.addEventHandler(type, handler);
-		});
+		});				
 	}
 
 	public static <A> Observable<A> javaObservable(javafx.beans.value.ObservableValue<A> ov){

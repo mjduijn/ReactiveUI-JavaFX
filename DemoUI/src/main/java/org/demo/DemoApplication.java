@@ -23,6 +23,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import nl.tudelft.rxfx.observable.FXObservable;
 import nl.tudelft.rxfx.observable.FXObserver;
@@ -109,14 +111,12 @@ public class DemoApplication extends Application{
 		.filter(x -> x != null)
 		.subscribe(x -> dt1.text.setValue(x.toString()));
 
-		Pane p = (Pane)null;
-		p.setv
+//		Pane p = (Pane)null;
+//		p.setv
 		
 //		FXObservable.javaObservable(b.pressedProperty())
 //		.doOnEach(x -> System.out.println(x))
 //		.subscribe();
-		
-		
 		
 		stage.show();
 	}
