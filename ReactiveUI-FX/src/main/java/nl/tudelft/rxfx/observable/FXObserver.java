@@ -173,6 +173,4 @@ public class FXObserver {
 			return (value) -> cp.setValue(value);
 		}
 	}
-	
-	
 }

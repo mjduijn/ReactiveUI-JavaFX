@@ -68,6 +68,10 @@ public class ExcelParser {
 	public static final Parser<Character, Expression> parser = exp.between(retn(null), eof());
 	
 	
+	public Reply<Character, Expression> parse(String input){
+		return parser.parse(State.of(input));
+	}
+	
 	static{
 		ref_exp.set(exp);
 		ref_addSubExp.set(addSubExp);
