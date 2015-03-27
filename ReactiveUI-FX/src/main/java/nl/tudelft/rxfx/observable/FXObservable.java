@@ -33,7 +33,6 @@ public class FXObservable {
 								@Override
 				public void changed(ObservableValue<? extends A> observable,
 						A oldValue, A newValue) {
-					System.out.println(newValue);
 					subscriber.onNext(newValue);
 				}
 			});

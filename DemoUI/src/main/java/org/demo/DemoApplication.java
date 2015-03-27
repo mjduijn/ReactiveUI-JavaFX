@@ -65,10 +65,9 @@ public class DemoApplication extends Application{
 		
 		/////////////////////////////Tab 0
 		//Observable slider
-		FXObservable.node((Slider)scene.lookup("#sliderVer"), MouseEvent.MOUSE_DRAGGED)
-		.map(e -> ((Slider)e.getSource()).getValue())
+		FXObservable.javaObservable(((Slider)scene.lookup("#sliderVer")).valueProperty())
+		.forEach(x -> dt0.slider.setValue(x.doubleValue()));
 //		.subscribe(FXObserver.slider.setValue((Slider)scene.lookup("#sliderHor"))); //Direct subscription
-		.subscribe(x -> dt0.slider.setValue(x));
 		dt0.slider.observable.subscribe(FXObserver.slider.setValue((Slider)scene.lookup("#sliderHor")));
 		
 		//Progress mirrors vertical slider
