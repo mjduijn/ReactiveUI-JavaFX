@@ -57,10 +57,6 @@ public class FXObserver {
 		}
 	}
 	
-	public static class pane {
-		//TODO
-	}
-	
 	public static class textInputControl {
 		public static Action1<String> setText(TextInputControl tic) {
 			return (newValue) -> tic.setText(newValue);			

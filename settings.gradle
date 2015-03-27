@@ -1,1 +1,1 @@
-include "LogExample", "ReactiveUI-FX", "ExcelExample", "DemoUI"
+include "LogExample", "ReactiveUI-FX", "ExcelExample", "DemoUI", "TicTacToe"

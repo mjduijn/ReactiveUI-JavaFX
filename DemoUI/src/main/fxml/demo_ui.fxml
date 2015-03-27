@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
@@ -103,6 +104,7 @@
                     </items>
                   </ToolBar>
                   <TextField layoutX="215.0" layoutY="277.0" />
+                  <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="-47.0" layoutY="23.0" prefHeight="200.0" prefWidth="506.0" />
                </children>
             </AnchorPane>
         </content>
