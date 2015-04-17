@@ -21,9 +21,9 @@ public class ObservableVariable<A> extends AbstractObservableVariable<A> impleme
 	}
 	
 	public void setValue(A a){
+		this.a = a;
 		subject.onNext(a);
 		changeListeners.forEach((listener) -> listener.changed(this, this.a, a));
-		this.a = a;
 	}
 
 	@Override

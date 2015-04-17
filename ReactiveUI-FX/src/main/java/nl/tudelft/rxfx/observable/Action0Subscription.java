@@ -21,6 +21,7 @@ public class Action0Subscription implements Subscription{
 	
 	@Override
 	public void unsubscribe() {
+		System.out.println("unsubscribing");
 		this.isSubscribed = false;
 		onUnsubscribed.call();
 	}

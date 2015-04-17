@@ -42,25 +42,21 @@ public class Cell {
 		this.parser = new ExcelParser();
 		this.cellSearcher = cellSearcher;
 		this.subscriptions = new LinkedList<Subscription>();
-		
 		formula.observable.subscribe(next -> {
-			
-			System.out.println("new formula: " + next);
 			subscriptions.forEach(s -> s.unsubscribe());
 			subscriptions.clear();
-			
-			System.out.println("the formula to parse is: " + next);
 			Reply<Character, Expression> parsed = parser.parse(next);
 			
 			if(parsed.isOk()){
-				final Expression exp = safeGetResult(parsed);
+				final Expression exp = unsafeGetResult(parsed); //Parsec method throws Exception...
 				ExpressionWithCellRefs expWithCellRefs = exp.visit(new ExcelCellRefResolverVisitor((r, c) -> Integer.parseInt(cellSearcher.call(r, c).getResult())), new LinkedList<>());
-				System.out.println(expWithCellRefs.cellRefs);
+				Integer res = expWithCellRefs.exp.visit(new ExcelInterpreter(), null);
+				result.setValue("" + res);
+				
 				expWithCellRefs.cellRefs.forEach(cellRef -> subscriptions.add(cellSearcher.call(cellRef.row, cellRef.column).result.observable.subscribe(newResult -> {
 					updateExpression(exp);
 				})));
-				Integer res = expWithCellRefs.exp.visit(new ExcelInterpreter(), null);
-				result.setValue("" + res);
+				
 			} else{
 				result.setValue("Error");
 			}
@@ -70,10 +66,11 @@ public class Cell {
 	private void updateExpression(Expression exp){
 		ExpressionWithCellRefs expWithCellRefs = exp.visit(new ExcelCellRefResolverVisitor((r, c) -> Integer.parseInt(cellSearcher.call(r, c).getResult())), new LinkedList<>());
 		Integer res = expWithCellRefs.exp.visit(new ExcelInterpreter(), null);
+		System.out.println("value is now: " + res);
 		result.setValue("" + res);
 	}
 	
-	private Expression safeGetResult(Reply<Character, Expression> reply){
+	private Expression unsafeGetResult(Reply<Character, Expression> reply){
 		try {
 			return reply.getResult();
 		} catch (Exception e) {
