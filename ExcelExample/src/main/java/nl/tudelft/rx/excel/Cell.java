@@ -66,7 +66,6 @@ public class Cell {
 	private void updateExpression(Expression exp){
 		ExpressionWithCellRefs expWithCellRefs = exp.visit(new ExcelCellRefResolverVisitor((r, c) -> Integer.parseInt(cellSearcher.call(r, c).getResult())), new LinkedList<>());
 		Integer res = expWithCellRefs.exp.visit(new ExcelInterpreter(), null);
-		System.out.println("value is now: " + res);
 		result.setValue("" + res);
 	}
 	
