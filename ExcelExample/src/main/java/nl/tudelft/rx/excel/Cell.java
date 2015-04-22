@@ -101,6 +101,4 @@ public class Cell {
 				+ subscriptions + ", parser=" + parser + ", cellSearcher="
 				+ cellSearcher + "]";
 	}
-	
-	
 }

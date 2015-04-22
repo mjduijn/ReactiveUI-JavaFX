@@ -41,10 +41,18 @@ public class RxLogApplication extends Application{
 		
 		Label errorLabel = (Label) scene.lookup("#logError");
 		model.error.observable.subscribe(FXObservers.label.text(errorLabel));
-		model.error.observable.map(s -> s.isEmpty()).subscribe(FXObservers.node.enabled(scene.lookup("#addLog")));
+		
+		model.error.observable
+			.map(s -> s.isEmpty())
+			.subscribe(FXObservers.node.enabled(scene.lookup("#addLog")));
 		
 		TextField logField = (TextField) scene.lookup("#logField");
-		FXObservable.node(logField, KeyEvent.KEY_RELEASED).forEach(event -> model.content.setValue(((TextInputControl) event.getSource()).getText()));		
+		
+		FXObservable.node(logField, KeyEvent.KEY_RELEASED)
+			.forEach( event -> 
+				model.setContent(((TextInputControl) event.getSource()).getText())
+			);
+		
 		model.content.observable
 			.filter(x -> x.isEmpty())
 			.forEach(FXObservers.textField.text(logField));

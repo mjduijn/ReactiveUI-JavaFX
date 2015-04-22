@@ -1,9 +1,12 @@
 package log;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import nl.tudelft.rxfx.observable.ObservableListVariable;
 import nl.tudelft.rxfx.observable.ObservableVariable;
+import rx.Subscription;
 
 
 
@@ -21,4 +24,9 @@ public class LogViewModel {
 	public void setError(String error) {
 		this.error.setValue(error);
 	}
+	
+	public void setContent(String content){
+		this.content.setValue(content);
+	}
+	
 }

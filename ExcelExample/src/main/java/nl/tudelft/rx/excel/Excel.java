@@ -69,7 +69,7 @@ public class Excel extends Application{
 			for(char c = cFrom ; c <= cTo ; c++){
 				Cell cell = new Cell(i, ""+c, cellSearcher);
 				cell.setFormula("0");
-				cell.result.observable.subscribe(x -> System.out.println("result is now: " + x));
+				//cell.result.observable.subscribe(x -> System.out.println("result is now: " + x));
 				row.put(""+c, cell);
 			}
 			spreadsheet.cells.add(row);
