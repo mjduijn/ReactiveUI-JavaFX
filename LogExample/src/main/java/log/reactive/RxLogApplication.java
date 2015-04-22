@@ -39,23 +39,24 @@ public class RxLogApplication extends Application{
 		LogViewModel model = new LogViewModel(logList.getItems());
 		model.list.addAll(Arrays.asList(new String[]{"bla", "bli", "blo"}));
 		
+		
 		Label errorLabel = (Label) scene.lookup("#logError");
-		model.error.observable.subscribe(FXObservers.label.text(errorLabel));
+		model.error.observable.subscribe(FXObservers.label.text(errorLabel)); //Bind error variable to error label in UI
 		
 		model.error.observable
 			.map(s -> s.isEmpty())
-			.subscribe(FXObservers.node.enabled(scene.lookup("#addLog")));
+			.subscribe(FXObservers.node.enabled(scene.lookup("#addLog"))); //Enable/disable add button depending on if there is an error
 		
 		TextField logField = (TextField) scene.lookup("#logField");
 		
 		FXObservable.node(logField, KeyEvent.KEY_RELEASED)
 			.forEach( event -> 
 				model.setContent(((TextInputControl) event.getSource()).getText())
-			);
+			); //Update model whenever something is typed in the input field
 		
 		model.content.observable
 			.filter(x -> x.isEmpty())
-			.forEach(FXObservers.textField.text(logField));
+			.forEach(FXObservers.textField.text(logField)); //Update the TextField whenever the model content variable is cleared
 		
 		model.content.observable.forEach(input -> {
 			if(input.isEmpty()){
@@ -65,14 +66,14 @@ public class RxLogApplication extends Application{
 			} else{
 				model.setError("");
 			}
-		});
+		}); //update the error variable whenever the content changes
 		
 		Action1<TextInputControl> add = (input) -> {
 			if(!model.list.contains(input.getText())) {
 				model.list.add(input.getText());
 				model.content.setValue("");
 			}
-		};
+		}; // onNext for whenever a value should be added
 		
 		Observable.merge(
 				FXObservable.node(scene.lookup("#logField"), ActionEvent.ACTION),
@@ -80,14 +81,15 @@ public class RxLogApplication extends Application{
 		)
 		.map((o) -> (TextInputControl) scene.lookup("#logField"))
 		.filter((input) -> !input.getText().isEmpty())
-		.subscribe(add);
+		.subscribe(add); //merge pressing enter on the TextField and pressing the add button, executing the add action
 		
 		FXObservable.node(scene.lookup("#sortAZ"), ActionEvent.ACTION)
 		.map((event) -> (Comparator<String>) (x, y) -> x.compareTo(y))
 		.mergeWith(FXObservable.node(scene.lookup("#sortZA"), ActionEvent.ACTION).map((event) -> (Comparator<String>) (x, y) -> y.compareTo(x)))
 		.forEach((comparator) -> {
 			Collections.sort(model.list, comparator);
-		});
+		}); //merge the sort buttons, map them to Observable<Comparator<String>> then sort the list using this comparator
+		
 		stage.show();
 	}
 }
