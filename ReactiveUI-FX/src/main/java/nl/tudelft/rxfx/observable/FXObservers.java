@@ -29,7 +29,7 @@ import javafx.util.Duration;
 import rx.functions.Action0;
 import rx.functions.Action1;
 
-public class FXObserver {
+public class FXObservers {
 	
 	public static class node {
 		public static Action1<Boolean> enabled(Node node){
@@ -40,7 +40,7 @@ public class FXObserver {
 			return (newValue) -> node.setDisable(newValue);
 		}
 
-		public static Action1<Boolean> setVisible(Node node){
+		public static Action1<Boolean> visible(Node node){
 			return (newValue) -> node.setVisible(!newValue);
 		}
 	}
@@ -52,13 +52,13 @@ public class FXObserver {
 	}
 	
 	public static class tabPane {
-		public static Action1<Integer> setSelected(TabPane tab){
+		public static Action1<Integer> selected(TabPane tab){
 			return (newValue) -> tab.getSelectionModel().select(newValue);
 		}
 	}
 	
 	public static class textInputControl {
-		public static Action1<String> setText(TextInputControl tic) {
+		public static Action1<String> text(TextInputControl tic) {
 			return (newValue) -> tic.setText(newValue);			
 		}
 	}	
@@ -72,55 +72,55 @@ public class FXObserver {
 	}
 	
 	public static class slider {
-		public static Action1<Double> setValue(Slider slider){
+		public static Action1<Double> value(Slider slider){
 			return (newValue) -> slider.setValue(newValue);
 		}
 	}
 	
 	public static class progressIndicator {
-		public static Action1<Double> setProgress(ProgressIndicator progress) {
+		public static Action1<Double> progress(ProgressIndicator progress) {
 			return (newValue) -> progress.setProgress(newValue);
 		}
 	}
 	
 	public static class checkBox {
-		public static Action1<Boolean> setSelected(CheckBox cb) {
+		public static Action1<Boolean> selected(CheckBox cb) {
 			return (newValue) -> cb.setSelected(newValue);
 		}
 	}
 	
 	public static class progressBar {
-		public static Action1<Double> setProgress(ProgressBar progress) {
+		public static Action1<Double> progress(ProgressBar progress) {
 			return (newValue) -> progress.setProgress(newValue);
 		}
 	}
 	
 	public static class datePicker {
-		public static Action1<LocalDate> setDate(DatePicker d) {
+		public static Action1<LocalDate> date(DatePicker d) {
 			return (newValue) -> d.setValue(newValue);
 		}		
 	}
 	
 	public static class toggleButton {
-		public static Action1<Boolean> setSelected(ToggleButton tb) {
+		public static Action1<Boolean> selected(ToggleButton tb) {
 			return (newValue) -> tb.setSelected(newValue);
 		}
 	}
 
 	public static class scrollBar {
-		public static Action1<Double> setValue(ScrollBar sb) {
+		public static Action1<Double> value(ScrollBar sb) {
 			return (newValue) -> sb.setValue(newValue);
 		}		
 	}
 	
 	public static class radioButton {
-		public static Action1<Boolean> setSelected(RadioButton rb) {
+		public static Action1<Boolean> selected(RadioButton rb) {
 			return (newValue) -> rb.setSelected(newValue);
 		}		
 	}
 	
 	public static class pagination {
-		public static Action1<Integer> setSelected(Pagination p) {
+		public static Action1<Integer> selected(Pagination p) {
 			return (newValue) -> p.setCurrentPageIndex(newValue);
 		}		
 	}
@@ -141,31 +141,31 @@ public class FXObserver {
 	}
 	
 	public static class imageView {
-		public static Action1 <Image> setImage(ImageView iv) {
+		public static Action1 <Image> image(ImageView iv) {
 			return (newValue) -> iv.setImage(newValue);
 		}
 	}
 	
 	public static class hyperlink {
-		public static Action1<Boolean> setVisited(Hyperlink h) {
+		public static Action1<Boolean> visited(Hyperlink h) {
 			return (value) -> h.setVisited(value);
 		}
 	}
 	
 	public static class HTMLeditor {
-		public static Action1<String> setVisited(HTMLEditor h) {
+		public static Action1<String> visited(HTMLEditor h) {
 			return (value) -> h.setHtmlText(value);
 		}
 	}
 
 	public static class selectionModel { //Used in combo box and choice box
-		public static Action1<Integer> setVisited(SelectionModel<?> sm) {
+		public static Action1<Integer> visited(SelectionModel<?> sm) {
 			return (value) -> sm.select(value);
 		}
 	}
 	
 	public static class colorPicker {
-		public static Action1<Color> setVisited(ColorPicker cp) {
+		public static Action1<Color> visited(ColorPicker cp) {
 			return (value) -> cp.setValue(value);
 		}
 	}

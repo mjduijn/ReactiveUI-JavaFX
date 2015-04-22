@@ -6,14 +6,15 @@ import rx.subjects.Subject;
 import rx.Observable.OnSubscribe;
 
 public abstract class AbstractObservableVariable<A>{
-	protected A a;
+	protected A value;
 	protected final Subject<A, A> subject;
 	public final Observable<A> observable;
 	
-	private AbstractObservableVariable(final Subject<A, A> subject, A a) {
+	private AbstractObservableVariable(final Subject<A, A> subject, A value) {
 		this.subject = subject;
-		this.a = a;
+		this.value = value;
 		this.observable = subject;
+		subject.onNext(value);
 	}
 	
 	public AbstractObservableVariable(A a) {
@@ -21,6 +22,6 @@ public abstract class AbstractObservableVariable<A>{
 	}
 	
 	public A getValue(){
-		return a;
+		return value;
 	}
 }

@@ -4,8 +4,6 @@ import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -20,7 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import log.LogViewModel;
 import nl.tudelft.rxfx.observable.FXObservable;
-import nl.tudelft.rxfx.observable.FXObserver;
+import nl.tudelft.rxfx.observable.FXObservers;
 import rx.Observable;
 import rx.functions.Action1;
 
@@ -37,20 +35,19 @@ public class RxLogApplication extends Application{
 		Scene scene = new Scene(parent);
 		stage.setScene(scene);
 		
-		
 		ListView<String> logList = ((ListView<String>) scene.lookup("#logList"));
 		LogViewModel model = new LogViewModel(logList.getItems());
 		model.list.addAll(Arrays.asList(new String[]{"bla", "bli", "blo"}));
 		
-		
 		Label errorLabel = (Label) scene.lookup("#logError");
-		model.error.observable.subscribe(FXObserver.label.text(errorLabel));
-		model.error.observable.map(s -> s.isEmpty()).subscribe(FXObserver.node.enabled(scene.lookup("#addLog")));
+		model.error.observable.subscribe(FXObservers.label.text(errorLabel));
+		model.error.observable.map(s -> s.isEmpty()).subscribe(FXObservers.node.enabled(scene.lookup("#addLog")));
 		
 		TextField logField = (TextField) scene.lookup("#logField");
 		FXObservable.node(logField, KeyEvent.KEY_RELEASED).forEach(event -> model.content.setValue(((TextInputControl) event.getSource()).getText()));		
-		model.content.observable.filter(x -> x.isEmpty()).forEach(FXObserver.textField.setText(logField));
-		
+		model.content.observable
+			.filter(x -> x.isEmpty())
+			.forEach(FXObservers.textField.text(logField));
 		
 		model.content.observable.forEach(input -> {
 			if(input.isEmpty()){

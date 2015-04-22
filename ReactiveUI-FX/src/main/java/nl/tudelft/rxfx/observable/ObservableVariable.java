@@ -16,14 +16,10 @@ public class ObservableVariable<A> extends AbstractObservableVariable<A> impleme
 		this.changeListeners = new HashSet<>();
 	}
 	
-	public ObservableVariable() {
-		this(null); //TODO do default constructor instead if it has one?
-	}
-	
 	public void setValue(A a){
-		this.a = a;
+		this.value = a;
 		subject.onNext(a);
-		changeListeners.forEach((listener) -> listener.changed(this, this.a, a));
+		changeListeners.forEach((listener) -> listener.changed(this, this.value, a));
 	}
 
 	@Override

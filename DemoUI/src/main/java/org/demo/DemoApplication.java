@@ -27,7 +27,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import nl.tudelft.rxfx.observable.FXObservable;
-import nl.tudelft.rxfx.observable.FXObserver;
+import nl.tudelft.rxfx.observable.FXObservers;
 
 public class DemoApplication extends Application{
 
@@ -68,23 +68,23 @@ public class DemoApplication extends Application{
 		FXObservable.javaObservable(((Slider)scene.lookup("#sliderVer")).valueProperty())
 		.forEach(x -> dt0.slider.setValue(x.doubleValue()));
 //		.subscribe(FXObserver.slider.setValue((Slider)scene.lookup("#sliderHor"))); //Direct subscription
-		dt0.slider.observable.subscribe(FXObserver.slider.setValue((Slider)scene.lookup("#sliderHor")));
+		dt0.slider.observable.subscribe(FXObservers.slider.value((Slider)scene.lookup("#sliderHor")));
 		
 		//Progress mirrors vertical slider
 		dt0.slider.observable
 		.map(x -> x * 0.01)
-		.subscribe(FXObserver.progressIndicator.setProgress((ProgressIndicator)scene.lookup("#progress")));
+		.subscribe(FXObservers.progressIndicator.progress((ProgressIndicator)scene.lookup("#progress")));
 		
 		//Progress bar
 		dt0.slider.observable
 		.map(x -> x * 0.01)
-		.subscribe(FXObserver.progressBar.setProgress((ProgressBar)scene.lookup("#progressBar")));
+		.subscribe(FXObservers.progressBar.progress((ProgressBar)scene.lookup("#progressBar")));
 		
 		//Checkboxes
 		FXObservable.node((CheckBox)scene.lookup("#cbUp"), MouseEvent.MOUSE_RELEASED)
 		.subscribe(x -> dt0.checkBox.setValue(!((CheckBox)x.getSource()).selectedProperty().get()));
 
-		dt0.checkBox.observable.subscribe(FXObserver.checkBox.setSelected((CheckBox)scene.lookup("#cbDown")));
+		dt0.checkBox.observable.subscribe(FXObservers.checkBox.selected((CheckBox)scene.lookup("#cbDown")));
 		
 		//Textfield
 		FXObservable.node(scene.lookup("#textField"), KeyEvent.KEY_RELEASED)
@@ -102,7 +102,7 @@ public class DemoApplication extends Application{
 		
 //		FXObservable.node(scene.lookup("#tf1High"), KeyEvent.KEY_TYPED)
 		
-		dt1.text.observable.subscribe(FXObserver.textField.setText((TextField)scene.lookup("#tf1Low")));
+		dt1.text.observable.subscribe(FXObservers.textField.text((TextField)scene.lookup("#tf1Low")));
 
 		//Datepicker observe
 		FXObservable.node(scene.lookup("#datePicker"), ActionEvent.ACTION)
